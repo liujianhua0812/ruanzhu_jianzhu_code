@@ -1,0 +1,42 @@
+:root {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #ebe4d8;
+  --bg-card: #fffef9;
+  --accent-primary: #8b4513;
+  --accent-secondary: #a0522d;
+  --accent-gold: #c9a227;
+  --text-primary: #2c1810;
+  --text-secondary: #5c4a3d;
+  --border-color: #d4c4a8;
+  --shadow-soft: 0 2px 12px rgba(139, 69, 19, 0.08);
+  --shadow-medium: 0 4px 20px rgba(139, 69, 19, 0.12);
+  --font-serif: 'Noto Serif SC', 'ZCOOL XiaoWei', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.6;
+}
+
+// Element Plus 主题覆盖
+.el-button--primary {
+  --el-button-bg-color: var(--accent-primary);
+  --el-button-border-color: var(--accent-primary);
+  --el-button-hover-bg-color: var(--accent-secondary);
+  --el-button-hover-border-color: var(--accent-secondary);
+}
+
+.el-card {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-soft);
+}
