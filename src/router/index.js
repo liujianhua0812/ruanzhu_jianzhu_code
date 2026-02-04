@@ -34,6 +34,18 @@ const routes = [
         name: 'Map',
         component: () => import('@/views/MapView.vue'),
         meta: { title: '地图分布' }
+      },
+      {
+        path: 'cultural-value',
+        name: 'CulturalValue',
+        component: () => import('@/views/CulturalValueView.vue'),
+        meta: { title: '文化价值评估' }
+      },
+      {
+        path: 'similarity',
+        name: 'Similarity',
+        component: () => import('@/views/SimilarityView.vue'),
+        meta: { title: '风格相似性分析' }
       }
     ]
   },

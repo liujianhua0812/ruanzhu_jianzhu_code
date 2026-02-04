@@ -13,6 +13,8 @@
         <router-link to="/compare" class="nav-link">建筑对比</router-link>
         <router-link to="/knowledge" class="nav-link">知识图谱</router-link>
         <router-link to="/map" class="nav-link">地图分布</router-link>
+        <router-link to="/cultural-value" class="nav-link">文化价值评估</router-link>
+        <router-link to="/similarity" class="nav-link">风格相似性</router-link>
       </nav>
     </header>
 

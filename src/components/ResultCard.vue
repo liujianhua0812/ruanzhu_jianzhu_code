@@ -148,13 +148,29 @@
     <div class="section" v-if="result?.culturalFeatures">
       <h4>文化特征</h4>
       <div class="cultural-grid">
-        <div class="item">
-          <span class="label">对称性</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfSymmetryLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfSymmetryLabel', result.culturalFeatures.symmetryLabel || '对称性')"
+          >{{ result.culturalFeatures.symmetryLabel || '对称性' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfSymmetry'"
-            class="editable"
-            @dblclick="startEdit('cfSymmetry', result.culturalFeatures.symmetry)"
-          >{{ result.culturalFeatures.symmetry }}</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfSymmetry', result.culturalFeatures.symmetry)"
+          >{{ result.culturalFeatures.symmetry || '-' }}</span>
           <input
             v-else
             ref="editInputRef"
@@ -165,15 +181,32 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
-        <div class="item">
-          <span class="label">开间</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfBaysLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfBaysLabel', result.culturalFeatures.baysLabel || '开间')"
+          >{{ result.culturalFeatures.baysLabel || '开间' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfBays'"
-            class="editable"
-            @dblclick="startEdit('cfBays', result.culturalFeatures.bays)"
-          >{{ result.culturalFeatures.bays }} 间</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfBays', result.culturalFeatures.bays != null ? String(result.culturalFeatures.bays) : '')"
+          >{{ result.culturalFeatures.bays != null ? result.culturalFeatures.bays : '-' }} 间</span>
           <input
             v-else
             ref="editInputRef"
@@ -184,15 +217,32 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
-        <div class="item">
-          <span class="label">屋顶坡度</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfRoofSlopeLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfRoofSlopeLabel', result.culturalFeatures.roofSlopeLabel || '屋顶坡度')"
+          >{{ result.culturalFeatures.roofSlopeLabel || '屋顶坡度' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfRoofSlope'"
-            class="editable"
-            @dblclick="startEdit('cfRoofSlope', result.culturalFeatures.roofSlope)"
-          >{{ result.culturalFeatures.roofSlope }}</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfRoofSlope', result.culturalFeatures.roofSlope)"
+          >{{ result.culturalFeatures.roofSlope || '-' }}</span>
           <input
             v-else
             ref="editInputRef"
@@ -203,15 +253,32 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
-        <div class="item">
-          <span class="label">主色调</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfMainColorLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfMainColorLabel', result.culturalFeatures.mainColorLabel || '主色调')"
+          >{{ result.culturalFeatures.mainColorLabel || '主色调' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfMainColor'"
-            class="editable"
-            @dblclick="startEdit('cfMainColor', result.culturalFeatures.mainColor)"
-          >{{ result.culturalFeatures.mainColor }}</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfMainColor', result.culturalFeatures.mainColor)"
+          >{{ result.culturalFeatures.mainColor || '-' }}</span>
           <input
             v-else
             ref="editInputRef"
@@ -222,15 +289,32 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
-        <div class="item">
-          <span class="label">社会等级</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfSocialLevelLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfSocialLevelLabel', result.culturalFeatures.socialLevelLabel || '社会等级')"
+          >{{ result.culturalFeatures.socialLevelLabel || '社会等级' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfSocialLevel'"
-            class="editable"
-            @dblclick="startEdit('cfSocialLevel', result.culturalFeatures.socialLevel)"
-          >{{ result.culturalFeatures.socialLevel }}</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfSocialLevel', result.culturalFeatures.socialLevel)"
+          >{{ result.culturalFeatures.socialLevel || '-' }}</span>
           <input
             v-else
             ref="editInputRef"
@@ -241,15 +325,32 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
-        <div class="item">
-          <span class="label">功能属性</span>
+        <div class="item editable-row">
+          <span
+            v-if="editing !== 'cfFunctionLabel'"
+            class="label editable"
+            @dblclick.stop="startEdit('cfFunctionLabel', result.culturalFeatures.functionLabel || '功能属性')"
+          >{{ result.culturalFeatures.functionLabel || '功能属性' }}</span>
+          <input
+            v-else
+            ref="editInputRef"
+            type="text"
+            class="edit-input label-edit"
+            :value="editValue"
+            @input="editValue = $event.target.value"
+            @blur="commitEdit"
+            @keydown.enter.prevent="commitEdit"
+            @keydown.esc="cancelEdit"
+            @dblclick.stop
+          />
           <span
             v-if="editing !== 'cfFunction'"
-            class="editable"
-            @dblclick="startEdit('cfFunction', result.culturalFeatures.function)"
-          >{{ result.culturalFeatures.function }}</span>
+            class="value editable"
+            @dblclick.stop="startEdit('cfFunction', result.culturalFeatures.function)"
+          >{{ result.culturalFeatures.function || '-' }}</span>
           <input
             v-else
             ref="editInputRef"
@@ -260,6 +361,7 @@
             @blur="commitEdit"
             @keydown.enter.prevent="commitEdit"
             @keydown.esc="cancelEdit"
+            @dblclick.stop
           />
         </div>
       </div>
@@ -351,16 +453,28 @@ function commitEdit() {
       evidence[i] = { ...evidence[i], desc: val }
       emit('update', { evidence })
     }
+  } else if (key === 'cfSymmetryLabel') {
+    emit('update', { culturalFeatures: { symmetryLabel: val || '对称性' } })
   } else if (key === 'cfSymmetry') {
     emit('update', { culturalFeatures: { symmetry: val } })
+  } else if (key === 'cfBaysLabel') {
+    emit('update', { culturalFeatures: { baysLabel: val || '开间' } })
   } else if (key === 'cfBays') {
     emit('update', { culturalFeatures: { bays: val } })
+  } else if (key === 'cfRoofSlopeLabel') {
+    emit('update', { culturalFeatures: { roofSlopeLabel: val || '屋顶坡度' } })
   } else if (key === 'cfRoofSlope') {
     emit('update', { culturalFeatures: { roofSlope: val } })
+  } else if (key === 'cfMainColorLabel') {
+    emit('update', { culturalFeatures: { mainColorLabel: val || '主色调' } })
   } else if (key === 'cfMainColor') {
     emit('update', { culturalFeatures: { mainColor: val } })
+  } else if (key === 'cfSocialLevelLabel') {
+    emit('update', { culturalFeatures: { socialLevelLabel: val || '社会等级' } })
   } else if (key === 'cfSocialLevel') {
     emit('update', { culturalFeatures: { socialLevel: val } })
+  } else if (key === 'cfFunctionLabel') {
+    emit('update', { culturalFeatures: { functionLabel: val || '功能属性' } })
   } else if (key === 'cfFunction') {
     emit('update', { culturalFeatures: { function: val } })
   } else if (key === 'summary') {
@@ -521,6 +635,30 @@ function commitEdit() {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .editable-row {
+    padding: 4px 0;
+    border-radius: 4px;
+
+    .label.editable,
+    .value.editable {
+      cursor: text;
+      padding: 2px 4px;
+      border-radius: 4px;
+
+      &:hover {
+        background: rgba(139, 69, 19, 0.08);
+      }
+    }
+
+    .value {
+      min-width: 60px;
+    }
+
+    .label-edit {
+      min-width: 70px;
+    }
   }
 }
 
