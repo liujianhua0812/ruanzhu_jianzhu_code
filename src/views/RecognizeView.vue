@@ -31,9 +31,9 @@
                 </el-upload>
               </div>
             </el-tab-pane>
-            <el-tab-pane label="文本输入" name="text">
+            <!-- <el-tab-pane label="文本输入" name="text">
               <TextInput @extract="onTextExtract" />
-            </el-tab-pane>
+            </el-tab-pane> -->
           </el-tabs>
         </el-card>
 
@@ -82,7 +82,7 @@
       <!-- 右侧：结果卡片 -->
       <aside class="sidebar-right">
         <div v-if="currentResult" class="result-area">
-          <ResultCard :result="currentResult" @update="onResultUpdate" />
+          <ResultCard :result="currentResult" :result-title="resultCardTitle" @update="onResultUpdate" />
           <div class="actions">
             <el-button size="small" @click="addToCompare">加入对比</el-button>
             <el-button size="small" type="primary" @click="goImmersive">沉浸式浏览</el-button>
@@ -133,6 +133,11 @@ const currentImage = computed(() =>
 )
 
 const currentResult = computed(() => currentImage.value?.result ?? null)
+
+const resultCardTitle = computed(() => {
+  const map = { image: '图像识别结果', video: '视频识别结果', text: '文本识别结果' }
+  return map[activeTab.value] ?? '识别结果'
+})
 
 async function handleImageUpload(files) {
   for (const file of files) {

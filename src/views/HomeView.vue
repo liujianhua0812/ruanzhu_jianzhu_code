@@ -15,7 +15,7 @@
         <div class="feature-card">
           <div class="feature-icon">📷</div>
           <h3>多模态输入</h3>
-          <p>支持建筑照片、视频关键帧、文本描述多种输入方式</p>
+          <p>支持建筑照片、视频关键帧多种输入方式</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏯</div>

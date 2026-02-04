@@ -1,6 +1,6 @@
 <template>
   <div class="result-card">
-    <h3 class="card-title">识别结果</h3>
+    <h3 class="card-title">{{ resultTitle }}</h3>
 
     <div class="section" v-if="result?.buildingType">
       <h4>建筑类型</h4>
@@ -290,7 +290,8 @@
 import { ref, nextTick } from 'vue'
 
 const props = defineProps({
-  result: Object
+  result: Object,
+  resultTitle: { type: String, default: '识别结果' }
 })
 
 const emit = defineEmits(['update'])
